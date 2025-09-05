@@ -66,7 +66,7 @@ router.post('/login', async function(req, res, next){
 
     // 사용자 조회
     const existingUser = await users.findOne({username: username});
-    if(!existingUser){
+    if(existingUser){
       var compareResult = bcrypt.compareSync(password, existingUser.password);
       if(compareResult){
         // 세션에 사용자 정보 저장
@@ -78,8 +78,7 @@ router.post('/login', async function(req, res, next){
       }else{
         res.status(401).json({message: 'Invalid Password'});
       }
-    }
-    
+    }    
   }catch(error){
     console.error('Error during signin:', error);
     res.status(500).json({message: 'Internal server error.'});
