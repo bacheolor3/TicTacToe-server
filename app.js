@@ -8,8 +8,6 @@ var logger = require('morgan');
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 //세션 설정
-
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -38,6 +36,11 @@ async function connectDB(){
     process.exit(1);
   }
 }
+
+connectDB().catch(err => {
+  console.error('Failed to connect to the database', err);
+  process.exit(1);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
