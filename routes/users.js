@@ -40,7 +40,7 @@ router.post('/signup', async function(req, res, next){
       username: username,
       password: hash,
       nickname: nickname,
-      createdAt: new Data()
+      createdAt: new Date()
     });
     res.status(201).json({message:'User registered successfully'});
   }catch(error){
