@@ -19,7 +19,7 @@ async function connectDB(){
 
   try{
     const database = await MongoClient.connect(databaseUrl, {
-      userNewUrlPArser: true;
+      userNewUrlPArser: true,
       useUnifiedTopology: true,
     });
     console.log("Database connected successfully");
