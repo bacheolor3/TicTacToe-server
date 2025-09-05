@@ -19,18 +19,18 @@ async function connectDB(){
 
   try{
     const database = await MongoClient.connect(databaseUrl, {
-      userNewUrlPArser: true,
+      useNewUrlParser: true,
       useUnifiedTopology: true,
     });
     console.log("Database connected successfully");
-    app.set('database', databse.db('tictactoe'));
+    app.set('database', database.db('tictactoe'));
 
     // 연결 종료 처리
     process.on('SIGINT', async () => {
       await database.close();
       console.log('Database Connection closed');
       process.exit(0);
-    })
+    });
   } catch(error){
     console.error('Database connection failed', error);
     process.exit(1);
