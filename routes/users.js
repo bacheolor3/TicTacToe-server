@@ -50,7 +50,7 @@ router.post('/signup', async function(req, res, next){
 });
 
 // 로그인
-router.post('/login', async function(req, res, next){
+router.post('/signin', async function(req, res, next){
   try{
     var username = req.body.username;
     var password = req.body.password;
@@ -78,6 +78,8 @@ router.post('/login', async function(req, res, next){
       }else{
         res.status(401).json({message: 'Invalid Password'});
       }
+    }else{
+      res.status(401).json({message : 'User not found'});
     }    
   }catch(error){
     console.error('Error during signin:', error);

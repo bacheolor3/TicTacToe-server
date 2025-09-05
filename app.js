@@ -21,7 +21,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'session-login',
   resave: false,
   saveUninitialized: true, // 세션이 필요할 때에만 저장하도록 설정
-  stroe: new fileStore({
+  store: new fileStore({
     path: './sessions', // 세션 파일 저장 경로 지정
     ttl: 24 * 60 * 60, // 세션 유효 기간 (1일)
     reapInterval: 60 * 60 // 세션 정리 주기 (1시간)
