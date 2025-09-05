@@ -9,7 +9,7 @@ var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 // Session 설정
 var session = require('express-session');
-var fileStore = require('express-mysql-session')(session);
+var fileStore = require('session-file-store')(session);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
