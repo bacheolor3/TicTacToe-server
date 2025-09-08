@@ -16,6 +16,9 @@ module.exports = function(server){
         // 서버 구현
         console.log('A user connected:', socket.id);
 
+        // 특정 Socket(클라이언트)이 방에 입장했을 때 처리
+        // 1. 대기방에 방이 있으면 입장
+        // 2. 대기방에 방이 없으면 새로 생성 후 입장
         if(rooms.length > 0){
             var roomId = rooms.shift();
             socket.join(roomId);
