@@ -60,6 +60,8 @@ module.exports = function(server){
             socket.to(roomId).emit('doOpponent', {blockIndex: blockIndex});
         });
 
-
+        socket.on("disconnected", function(reason){
+            console.log('Disconnected: ' + socket.id + ' Reason:' + reason);
+        });
     });
 };
